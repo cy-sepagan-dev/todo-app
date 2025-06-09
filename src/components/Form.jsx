@@ -20,41 +20,47 @@ export default function Form() {
     }
 
     function handleDelete(index) {
-        setComplete(pending.filter((_, i) => i !== index)); 
+        setComplete(complete.filter((_, i) => i !== index)); 
     }
 
     return (
-        <>
-            <h1>Todo List App</h1>
-            <p>{task}</p>
-            <form onSubmit={handleNewTask}>
-                <input 
-                    type="text"
-                    value={task}
-                    placeholder="Enter Task"
-                    onChange={(e) => setTask(e.target.value)}
-                />
-                <button type="submit">Add Task</button>
-            </form>
+        <div className="mx-auto flex flex-col container my-9">
+            <h1 className="text-6xl mb-9">Todo List App</h1>
 
-            <TaskList
-                title="Pendings"
-                listing={pending}
-                onClick={handleComplete}
-            />
+            <div className="flex gap-9">
+                <form onSubmit={handleNewTask} className="bg-blue-100 basis-1/3 p-9 flex flex-col gap-4 rounded-xl">
+                    <label htmlFor="taskInput" className="">Enter a new Task :</label>
+                    <input 
+                        className="p-4 rounded-lg"
+                        type="text"
+                        value={task}
+                        placeholder="Enter Task"
+                        onChange={(e) => setTask(e.target.value)}
+                    />
+                    <button type="submit" className="p-4 bg-blue-500 text-white rounded-lg">Add Task</button>
+                </form>
 
-            <TaskList
-                title="Completed"
-                listing={complete}
-                onClick={handleDelete}
-            />
-        </>
+                <div className="basis-2/3">
+                    <TaskList
+                        title="Pendings"
+                        listing={pending}
+                        onClick={handleComplete}
+                    />
+
+                    <TaskList
+                        title="Completed"
+                        listing={complete}
+                        onClick={handleDelete}
+                    />
+                </div>
+            </div>            
+        </div>
     );
 }
 
 export function CompleteButton({onClick}) {
     return(
-        <button onClick={onClick}>
+        <button className="p-4 bg-green-500 text-white rounded-lg" onClick={onClick}>
             Mark as Complete
         </button>
     );
@@ -62,7 +68,7 @@ export function CompleteButton({onClick}) {
 
 export function DeleteButton({onClick}) {
     return(
-        <button onClick={onClick}>
+        <button className="p-4 bg-red-500 text-white rounded-lg" onClick={onClick}>
             Delete Task
         </button>
     );
