@@ -1,4 +1,4 @@
-import { CompleteButton, DeleteButton } from "./Form";
+import { CompleteButton, DeleteButton } from "./VersionOne";
 
 function TaskList({title, listing, onClick}) {
     return(
