@@ -1,11 +1,13 @@
 import './App.css';
-import Form from './components/Form';
-
+import VersionOne from './components/VersionOne';
+import VersionTwo from './components/VersionTwo';
 function App() {
   return (
-    <>
-      <Form />
-    </>
+    <div className="min-h-screen bg-gray-200 p-24">
+      <VersionOne />
+      <VersionTwo />
+      
+    </div>
   );
 }
 
